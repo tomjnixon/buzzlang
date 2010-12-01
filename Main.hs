@@ -29,6 +29,8 @@ init_env parsed = do
 	            | (num, word) <- zip [0..10] $ words "zero one two three four five six seven eight nine ten"]
 	-- A comaprison function.
 	setGlobalVar env "equal" $ BuiltinMethod $ return . BoolVar . (\xs-> all (equal $ head xs) $ tail xs)
+	setGlobalVar env "nonep" $ BuiltinMethod $ return . BoolVar . (\xs-> all (equal NoneVar) $ xs)
+	setGlobalVar env "none" $ NoneVar
 	-- Load the methods from the parse tree.
 	load_env env parsed
 	return env

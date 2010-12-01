@@ -53,6 +53,20 @@ divParser = do reserved "migrate"
                args <- list2 expressionParser
                return $ Div args
 
+consParser = do reserved "leverage"
+                arg1 <- expressionParser
+                reserved "and"
+                arg2 <- expressionParser
+                return $ Cons arg1 arg2
+
+carParser = do reserved "decentralise"
+               arg <- expressionParser
+               return $ Car arg
+
+cdrParser = do reserved "centralise"
+               arg <- expressionParser
+               return $ Cdr arg
+
 callParser = do reserved "dispatch"
                 name <- identifier
                 arglist <- qualifiedList "integrating" expressionParser
@@ -66,6 +80,9 @@ expressionParser = choice $ map try [ addParser
                                     , mulParser
                                     , divParser
                                     , callParser
+                                    , consParser
+                                    , carParser
+                                    , cdrParser
                                     , identifierParser
                                     ]
 

@@ -24,5 +24,8 @@ data Expression = Identifier String
                 | Sub [Expression]
                 | Mul [Expression]
                 | Div [Expression]
+                | Cons Expression Expression
+                | Car Expression
+                | Cdr Expression
                 | Call String [Expression]
                 deriving (Show)

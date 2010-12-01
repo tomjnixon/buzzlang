@@ -10,6 +10,7 @@ data Variable = MethodVar [String] [Statement]
               | BuiltinMethod ([Variable] -> IO Variable)
               | IntegerVar Int
               | BoolVar Bool
+              | ConsVar Variable Variable
               | NoneVar
 
 -- Make them showable for debugging
@@ -19,6 +20,7 @@ instance Show Variable where
 	show (BuiltinMethod x) = "BuiltinMethod"
 	show (IntegerVar var) = "IntegerVar " ++ show var
 	show (BoolVar var) = "BoolVar " ++ show var
+	show (ConsVar a b) = "ConsVar " ++ show a ++ " " ++ show b
 	show NoneVar = "NoneVar"
 
 -- What the user gets when they print something.
@@ -27,12 +29,14 @@ to_str (BlockVar stmts) = "BlockVar " ++ show stmts
 to_str (BuiltinMethod x) = "BuiltinMethod"
 to_str (IntegerVar var) =  show var
 to_str (BoolVar var) =  show var
+to_str (ConsVar a b) = "(" ++ to_str a ++ " . " ++ to_str b ++ ")"
 to_str NoneVar = "None"
 
 -- Things are equal if they're obviously equal, otherwise false.
 equal (IntegerVar x) (IntegerVar y) = x == y
 equal (BoolVar x) (BoolVar y) = x == y
 equal (NoneVar) (NoneVar) = True
+equal (ConsVar aa ab) (ConsVar ba bb) = aa `equal` ba && ab `equal` bb
 equal _ _ = False
 
 
@@ -119,6 +123,18 @@ eval_exp env exp =
 		Mul exprs -> (mapM (eval_exp env) exprs) >>= return . int_op (*)
 		Div exprs -> (mapM (eval_exp env) exprs) >>= return . int_op div
 		Call name args -> (mapM (eval_exp env) args) >>= call env name
+		Cons a_exp b_exp -> do 
+			a <- eval_exp env a_exp
+			b <- eval_exp env b_exp
+			return $ ConsVar a b
+		Car exp -> do
+			val <- eval_exp env exp
+			return $ case val of
+				ConsVar a b -> a
+		Cdr exp -> do
+			val <- eval_exp env exp
+			return $ case val of
+				ConsVar a b -> b
 
 
 -- Make an operation from an integer function.
