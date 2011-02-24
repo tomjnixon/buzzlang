@@ -1,0 +1,14 @@
+Name:                buzzlang
+Version:             0.0
+Description:         A buzzword-based programming language.
+License:             MIT
+License-file:        LICENSE
+Author:              Thomas Nixon
+Maintainer:          tom@tomn.co.uk
+Build-Type:          Simple
+Cabal-Version:       >=1.2
+
+Executable buzz
+  Main-is: Main.hs
+  Build-Depends: parsec >= 2, base >= 3 && < 5, haskell98, ghc, containers
+  hs-source-dirs: src
