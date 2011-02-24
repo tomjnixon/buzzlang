@@ -1,0 +1,101 @@
+; Expressions.
+;;;;;;;;;;;;;;
+
+<expr-list-2> ::= <expression> <expr-list-2>
+                | <expression> "and" <expression>
+<expr-list>   ::= "only" <expression>
+                | <expr-list-2>
+
+; Expressions
+; Most of these are 'lisp-style', in that they can take more than 2 arguments.
+<add-expr> ::= "synergise" <expr-list-2>
+
+<sub-expr> ::= "contextualise" <expr-list-2>
+
+<mul-expr> ::= "project" <expr-list-2>
+
+<div-expr> ::= "migrate" <expr-list-2>
+
+<call-expr> ::= "dispatch" <identifier> "integrating" <expr-list>
+              | "dispatch" <identifier>
+
+<cons-expr> ::= "leverage" <expression> "and" <expression>
+
+<car-expr> ::= "decentralise" <expression>
+
+<cdr-expr> ::= "centralise" <expression>
+
+<expression> ::= <identifier>
+               | <add-expr>
+               | <sub-expr>
+               | <mul-expr>
+               | <div-expr>
+               | <call-expr>
+               | <cons-expr>
+               | <car-expr>
+               | <cdr-expr>
+
+
+; Statements.
+;;;;;;;;;;;;;
+
+<run-block> ::= "implement" <identifier>
+
+<assignment> ::= "integrate" <expression> "into" <identifier>
+
+; Call a named function with some args, and store the return value in the flag.
+<compare> ::= "consult" "market" "analyst" <identifier> "regarding" <expr-list>
+            | "consult" "market" "analyst" <identifier>
+
+<condition-type> ::= "up"   ; Flag is true.
+                   | "down" ; Flag is false.
+; Run the statement only if the flag is the same as condition-type.
+<conditional> ::= "if" "the" "lines" "go" <condition-type> "then" <statement>
+
+<return> ::= "report" <expression>
+
+; More standard streams and expressions need to be added.
+<stream> ::= "the" "business" "dashboard"
+<display> ::= "display" <expression> "on" <stream>
+
+; For side effects.
+; This isn't really needed, but if an expression is also a statement,
+; it makes it really hard to get programs working.
+; Maybe it would be better to have a call statement?
+<expr-stmt> ::= "progressively" <expression>
+
+<statement> ::= <run-block>
+              | <assignment>
+              | <compare>
+              | <conditional>
+              | <return>
+              | <display>
+              | <expr-stmt>
+
+
+; Programs.
+;;;;;;;;;;;
+
+<stmt-list> ::= <statement> <stmt-list>
+              | ""
+
+<ident-list-2> ::= <identifier> <ident-list-2>
+                 | <identifier> "and" <identifier>
+<ident-list>   ::= "only" <identifier>
+                 | <ident-list-2>
+
+; Function definition.
+<function> ::= <identifier> "is" "a" "best" "practice" "orchestrating" <ident-list> <stmt-list>
+           | <identifier> "is" "a" "best" "practice" <stmt-list>
+
+; Block definition.
+; Blocks are a list of statements that are run in the current
+; context when they are 'implemented'.
+; XXX: Should the flag be pushed? Might make them more useful.
+<block> ::= <identifier> "is" "a" "best" "business" "stratergy" <stmt-list>
+
+<program-part> ::= <function>
+                 | <block>
+<program> ::= <program-part> <program>
+            | ""
+
