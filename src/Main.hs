@@ -27,8 +27,9 @@ init_env parsed = do
 	-- Add some constants.
 	sequence $ [setGlobalVar env word (IntegerVar num) 
 	            | (num, word) <- zip [0..10] $ words "zero one two three four five six seven eight nine ten"]
-	-- A comaprison function.
+	-- Comparison functions.
 	setGlobalVar env "equal" $ BuiltinMethod $ return . BoolVar . (\xs-> all (equal $ head xs) $ tail xs)
+	setGlobalVar env "greater" $ BuiltinMethod $ return . BoolVar . and . (\xs-> zipWith greater xs $ tail xs)
 	setGlobalVar env "nonep" $ BuiltinMethod $ return . BoolVar . (\xs-> all (equal NoneVar) $ xs)
 	setGlobalVar env "none" $ NoneVar
 	-- Load the methods from the parse tree.

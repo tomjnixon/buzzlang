@@ -39,6 +39,13 @@ equal (NoneVar) (NoneVar) = True
 equal (ConsVar aa ab) (ConsVar ba bb) = aa `equal` ba && ab `equal` bb
 equal _ _ = False
 
+greater (IntegerVar x) (IntegerVar y) = x > y
+greater (BoolVar x) (BoolVar y) = x > y
+greater (NoneVar) (NoneVar) = True -- To make comparing lists work.
+greater (ConsVar aa ab) (ConsVar ba bb) = aa `greater` ba && ab `greater` bb
+greater _ _ = False
+
+
 
 -- The internal state of the interpreter.
 type Variables = IORef (M.Map String Variable)
