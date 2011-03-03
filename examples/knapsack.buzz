@@ -8,7 +8,63 @@ next_bin is a best practice orchestrating only l
 	if the lines go down then report leverage zero and
 		dispatch next_bin integrating only tail
 
+length is a best practice orchestrating only l
+	consult market analyst nonep regarding only l
+	if the lines go up then report zero
+	if the lines go down then report
+		synergise one and dispatch length integrating only centralise l
+
+calc_value is a best practice orchestrating problem and bitfield
+	consult market analyst nonep regarding only problem
+	if the lines go up then report leverage zero and zero
+	integrate dispatch calc_value integrating centralise problem and centralise bitfield
+		into next_value
+	consult market analyst equal regarding zero and decentralise bitfield
+	if the lines go down then report 
+		leverage synergise decentralise decentralise problem and decentralise next_value
+		and synergise centralise decentralise problem and centralise next_value
+	if the lines go up then report next_value
+
+make_bitfield is a best practice orchestrating only length
+	consult market analyst equal regarding zero and length
+	if the lines go up then report none
+	report leverage zero and dispatch make_bitfield
+		integrating only contextualise length and one
+
+all_ones is a best practice orchestrating only l
+	consult market analyst nonep regarding only l
+	if the lines go up then report one
+	consult market analyst equal regarding one and decentralise l
+	if the lines go up then report dispatch all_ones integrating only centralise l
+	if the lines go down then report zero
+
+solve_loop is a best practice orchestrating max, problem and bitfield
+	integrate dispatch calc_value integrating problem and bitfield into current
+	consult market analyst equal regarding one
+		and dispatch all_ones integrating only bitfield
+	if the lines go up then integrate leverage leverage zero and zero and none into best
+	if the lines go down then integrate dispatch solve_loop integrating max, problem
+		and dispatch next_bin integrating only bitfield into best
+	consult market analyst greater regarding decentralise current and max
+	if the lines go up then report best
+	consult market analyst greater regarding centralise current
+		and centralise decentralise best
+	if the lines go up then report leverage current and bitfield
+	report best
+
+solve is a best practice orchestrating problem and max
+	report dispatch solve_loop integrating max, problem
+		and dispatch make_bitfield integrating
+			only dispatch length integrating only problem
+
 main is a best practice
-	integrate leverage one and leverage zero and none into l
-	display dispatch next_bin integrating only l
-	on the business dashboard
+	integrate 
+		leverage leverage two and ten
+			and leverage leverage one and seven
+			and leverage leverage six and project five and five
+			and leverage leverage five and project six and four
+			and none
+		into problem
+	display problem on the business dashboard
+	display dispatch solve integrating problem and seven
+		on the business dashboard
